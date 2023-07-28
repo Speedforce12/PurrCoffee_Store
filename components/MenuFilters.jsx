@@ -16,7 +16,7 @@ const MenuFilters = ({ category }) => {
   };
 
   return (
-    <div>
+    <>
       <Button
         variant='outline'
         className={`rounded-full hover:bg-[#FFA16C] ${
@@ -25,7 +25,7 @@ const MenuFilters = ({ category }) => {
         onClick={handleCategory}>
         {category.name}
       </Button>
-    </div>
+    </>
   );
 };
 

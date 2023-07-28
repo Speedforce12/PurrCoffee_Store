@@ -5,9 +5,19 @@ import NavItems from "./NavItems";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import MobileDropDownNav from "./MobileDropDownNav";
 import { ShoppingCart } from "lucide-react";
-import { Button } from "./ui/button";
+import { useCart } from "@/lib/zustand";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [mounted, setMounted] = useState(false);
+  const { cart } = useCart();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <header className='border-b border-gray-300 h-14 md:px-8 px-5 flex items-center justify-between shadow-sm mx-auto'>
       <div className='md:hidden block'>
@@ -34,15 +44,16 @@ const Navbar = () => {
           </SignedOut>
         </div>
         <div className='relative py-2'>
-          <div class='bottom-0 absolute  right-0'>
-            <p class='flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white'>
-              30
+          <div className='bottom-0 absolute  right-0'>
+            <p className='flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white'>
+              {cart.length}
             </p>
           </div>
-          <Button>
-            <ShoppingCart size={20} />
-          </Button>
-      
+          <Link
+            href='/cart'
+            className='bg-black px-2 py-2 flex rounded-xl w-12'>
+            <ShoppingCart size={20} className='text-white' />
+          </Link>
         </div>
       </div>
     </header>

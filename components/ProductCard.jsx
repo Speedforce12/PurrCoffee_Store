@@ -1,10 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import QuantityCounter from "./QuantityCounter";
+import { useState } from "react";
 
 const ProductCard = ({ product }) => {
+  const [selectedSize, setSelectedSize] = useState("");
   return (
     <Card className=''>
       <CardContent className='p-3'>
@@ -31,16 +34,19 @@ const ProductCard = ({ product }) => {
             <div className='flex items-center justify-between mt-auto'>
               <p className='font-medium text-black'>Size:</p>
               <Button
+                onClick={() => setSelectedSize("small")}
                 variant='outline'
                 className={`rounded-full font-semibold  text-base`}>
                 S
               </Button>
               <Button
+                onClick={() => setSelectedSize("medium")}
                 variant='outline'
                 className={`rounded-full font-semibold  text-base`}>
                 M
               </Button>
               <Button
+                onClick={() => setSelectedSize("large")}
                 variant='outline'
                 className={`rounded-full font-semibold  text-base`}>
                 L
@@ -48,7 +54,7 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
         </div>
-        <QuantityCounter />
+        <QuantityCounter product={product} selectedSize={selectedSize} />
       </CardContent>
     </Card>
   );
