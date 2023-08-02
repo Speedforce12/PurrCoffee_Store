@@ -3,11 +3,31 @@
 import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import QuantityCounter from "./QuantityCounter";
 import { useState } from "react";
+import CartButton from "./CartButton";
 
 const ProductCard = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState("");
+
+  const Sizes = [
+    {
+      id: 1,
+      label: "S",
+      value: "small",
+    },
+    {
+      id: 2,
+      label: "M",
+      value: "medium",
+    },
+    {
+      id: 3,
+      label: "L",
+      value: "large",
+    },
+  ];
+
+  console.log(selectedSize);
   return (
     <Card className=''>
       <CardContent className='p-3'>
@@ -33,28 +53,21 @@ const ProductCard = ({ product }) => {
 
             <div className='flex items-center justify-between mt-auto'>
               <p className='font-medium text-black'>Size:</p>
-              <Button
-                onClick={() => setSelectedSize("small")}
-                variant='outline'
-                className={`rounded-full font-semibold  text-base`}>
-                S
-              </Button>
-              <Button
-                onClick={() => setSelectedSize("medium")}
-                variant='outline'
-                className={`rounded-full font-semibold  text-base`}>
-                M
-              </Button>
-              <Button
-                onClick={() => setSelectedSize("large")}
-                variant='outline'
-                className={`rounded-full font-semibold  text-base`}>
-                L
-              </Button>
+              {Sizes.map((size) => (
+                <Button
+                  key={size.id}
+                  onClick={() => setSelectedSize(size.value)}
+                  variant='outline'
+                  className={`rounded-full font-semibold  text-base hover:bg-[#FFA16C] hover:text-white ${
+                    selectedSize === size.value && "bg-[#FFA16C] text-white"
+                  }`}>
+                  {size.label}
+                </Button>
+              ))}
             </div>
           </div>
         </div>
-        <QuantityCounter product={product} selectedSize={selectedSize} />
+        <CartButton product={product} selectedSize={selectedSize} />
       </CardContent>
     </Card>
   );

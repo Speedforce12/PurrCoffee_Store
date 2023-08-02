@@ -2,10 +2,9 @@
 
 import { useCart } from "@/lib/zustand";
 import { Button } from "./ui/button";
-import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const QuantityCounter = ({ product, selectedSize }) => {
+const CartButton = ({ product, selectedSize }) => {
   const [mounted, setMounted] = useState(false);
   const { addToCart, updateQuantity } = useCart();
 
@@ -37,4 +36,4 @@ const QuantityCounter = ({ product, selectedSize }) => {
   );
 };
 
-export default QuantityCounter;
+export default CartButton;

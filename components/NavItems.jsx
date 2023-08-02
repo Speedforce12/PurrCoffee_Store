@@ -18,11 +18,6 @@ const NavItems = () => {
       active: pathname === `/menu`,
     },
     {
-      href: `/orders`,
-      label: "My Orders",
-      active: pathname === `/orders`,
-    },
-    {
       href: `/history`,
       label: "History",
       active: pathname === `/history`,

@@ -3,28 +3,55 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import qs from "query-string";
+import { cn } from "@/lib/utils";
 
-const MenuFilters = ({ category }) => {
+const MenuFilters = ({ categories }) => {
   const [menu, setMenu] = useState("");
   const searchParams = useSearchParams();
   const router = useRouter();
-  const currCategory = searchParams.get("category");
+  const currCategory = searchParams.get("categoryId");
 
-  const handleCategory = () => {
-    router.push(`/menu?category=${category.id}`);
-    setMenu(category.id);
+  const handleCategory = (categoryId) => {
+    const query = { categoryId };
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipNull: true }
+    );
+
+    router.push(url);
+    setMenu(categoryId);
   };
 
   return (
     <>
+      {/* resets the filter to show all products */}
       <Button
         variant='outline'
-        className={`rounded-full hover:bg-[#FFA16C] ${
-          menu === currCategory && "bg-[#FFA16C] text-white"
-        } hover:text-white hover:transition-colors hover:duration-300  w-40 `}
-        onClick={handleCategory}>
-        {category.name}
+        className={cn(
+          "rounded-full hover:bg-[#FFA16C] hover:text-white text-sm hover:transition-colors hover:duration-300  w-32",
+          !currCategory ? "bg-[#FFA16C] text-white" : "text-black"
+        )}
+        onClick={() => handleCategory(undefined)}>
+        All
       </Button>
+
+      {/* displays all filter options */}
+      {categories.map((category) => (
+        <Button
+          key={category.id}
+          variant='outline'
+          onClick={() => handleCategory(category.id)}
+          className={cn(
+            "rounded-full hover:bg-[#FFA16C] hover:text-white text-sm hover:transition-colors hover:duration-300  w-32",
+            category.id === currCategory && "bg-[#FFA16C] text-white"
+          )}>
+          {category.name}
+        </Button>
+      ))}
     </>
   );
 };
