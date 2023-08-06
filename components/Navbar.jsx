@@ -19,7 +19,7 @@ const Navbar = () => {
   if (!mounted) return null;
 
   return (
-    <header className='border-b border-gray-300 h-14 md:px-8 px-5 flex items-center justify-between shadow-sm mx-auto'>
+    <header className='border-b border-gray-300 h-14 md:px-8 px-5 flex items-center justify-between shadow-sm mx-auto bg-white'>
       <div className='md:hidden block'>
         <MobileDropDownNav />
       </div>

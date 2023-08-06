@@ -3,16 +3,20 @@
 import { useCart } from "@/lib/zustand";
 import { Button } from "./ui/button";
 import axios from "axios";
+import {useUser } from "@clerk/nextjs";
 
 const CartSummary = () => {
   const { cart } = useCart();
+  const { user } = useUser()
+  
+  
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const taxes = total * 0.1;
   const grandTotal = total + taxes;
 
   const handleCheckOut = async () => {
-    const {data} = await axios.post(`http://localhost:3001/api/checkout`, {
+    const {data} = await axios.post(`http://localhost:3001/api/checkout?userId=${user.id}`, {
       cartItems: cart,
     });
     window.location.assign(data);

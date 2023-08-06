@@ -1,6 +1,7 @@
 import getCategories from "@/actions/get-categories";
 import getProducts from "@/actions/get-products";
 import MenuFilters from "@/components/MenuFilters";
+import PaginationButtons from "@/components/PaginationButtons";
 import ProductCard from "@/components/ProductCard";
 import React from "react";
 
@@ -27,6 +28,7 @@ const MenuPage = async ({ searchParams }) => {
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+
         </div>
       ) : (
         <div className='flex items-center justify-center mt-20'>
@@ -35,6 +37,8 @@ const MenuPage = async ({ searchParams }) => {
           </p>
         </div>
       )}
+
+      <PaginationButtons/>
     </div>
   );
 };

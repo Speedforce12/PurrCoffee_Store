@@ -63,7 +63,6 @@ const MobileDropDownNav = () => {
         <SheetContent side='left'>
           <SheetHeader className='flex  justify-start'>
             <SheetTitle>
-              {" "}
               <Link
                 href='/'
                 className='md:text-3xl text-2xl font-bold flex items-center pr-5'>

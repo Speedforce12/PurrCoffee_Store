@@ -1,6 +1,13 @@
+import { GetUserOrders } from '@/actions/get-userOrder'
+import { currentUser } from '@clerk/nextjs'
 import React from 'react'
 
-const HistoryPage = () => {
+const HistoryPage = async () => {
+
+  const user = await currentUser()
+  const orderHistory = await GetUserOrders(user.id)
+
+  console.log(orderHistory)
   return (
     <div className='flex flex-col mt-5'>
       <div>

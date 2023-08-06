@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
 
   console.log(selectedSize);
   return (
-    <Card className=''>
+    <Card>
       <CardContent className='p-3'>
         <div className='gap-3 w-full max-w-md flex'>
           <div className='relative  md:h-44 rounded-md bg-zinc-200 p-2 w-28'>
@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
           </div>
 
           <div className='flex-col justify-between flex flex-1'>
-            <div className='flex items-center font-semibold'>
+            <div className='flex items-center font-semibold justify-between'>
               <h3 className='text-slate-800'>{product.name}</h3>
               <p className='ml-2 text-[#FFA16C]'>${product.price}</p>
             </div>
