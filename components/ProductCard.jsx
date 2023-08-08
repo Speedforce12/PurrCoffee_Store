@@ -27,7 +27,6 @@ const ProductCard = ({ product }) => {
     },
   ];
 
-  console.log(selectedSize);
   return (
     <Card>
       <CardContent className='p-3'>

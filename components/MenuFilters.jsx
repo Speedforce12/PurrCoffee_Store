@@ -2,12 +2,10 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
-import { useState } from "react";
 import qs from "query-string";
 import { cn } from "@/lib/utils";
 
 const MenuFilters = ({ categories }) => {
-  const [menu, setMenu] = useState("");
   const searchParams = useSearchParams();
   const router = useRouter();
   const currCategory = searchParams.get("categoryId");
@@ -23,7 +21,6 @@ const MenuFilters = ({ categories }) => {
     );
 
     router.push(url);
-    setMenu(categoryId);
   };
 
   return (
