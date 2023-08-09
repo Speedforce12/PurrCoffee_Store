@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
   return (
     <Card>
       <CardContent className='p-3'>
-        <div className='gap-3 w-full max-w-md flex'>
+        <div className='gap-3 max-w-md flex w-full'>
           <div className='relative  md:h-44 rounded-md bg-zinc-200 p-2 w-28'>
             <Image
               src={product.image}

@@ -22,8 +22,8 @@ const MenuPage = async ({ searchParams }) => {
 
   console.log(products.length);
   return (
-    <div className='flex flex-col my-10 mx-auto  items-center justify-between h-screen'>
-      <div>
+    <div className=' h-screen'>
+      <div className='my-10 mx-auto relative'>
         <div className='flex overflow-auto gap-4 w-full pb-3 mx-auto items-center'>
           <MenuFilters categories={categories} />
         </div>
@@ -42,7 +42,7 @@ const MenuPage = async ({ searchParams }) => {
         )}
       </div>
       {products.length !== 0 && (
-        <div className='pb-6 pt-3'>
+        <div className='absolute bottom-0 left-0 w-full pb-6 pt-3'>
           <PaginationButtons currPage={currPage} products={products} />
         </div>
       )}
