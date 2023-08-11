@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "PurrCoffee",
+  keywords: ["Coffee", "Coffee Beans", "Coffee Shop"],
   description: "Best Coffee available",
 };
 

@@ -11,7 +11,8 @@ export default function Home() {
             src='/cup_coffee.png'
             alt='home image'
             fill
-            priority
+            priority={true}
+            sizes='(min-width: 1360px) 606px, (min-width: 640px) 45.71vw, calc(100vw - 40px)'
             className='object-center'
           />
         </div>
@@ -65,10 +66,10 @@ export default function Home() {
         <div className='mt-10 sm:mt-0 ml-auto object-right-bottom'>
           <Image
             src='/coffee_falling.png'
-            width={300}
-            height={320}
-            alt=''
-            className=''
+            width={350}
+            height={375}
+            alt='coffee falling'
+            className="w-full h-auto"
           />
         </div>
       </div>
