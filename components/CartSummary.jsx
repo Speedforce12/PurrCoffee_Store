@@ -16,9 +16,12 @@ const CartSummary = () => {
   const grandTotal = total + taxes;
 
   const handleCheckOut = async () => {
-    const {data} = await axios.post(`http://localhost:3001/api/checkout?userId=${user.id}`, {
-      cartItems: cart,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_URL}/api/checkout?userId=${user.id}`,
+      {
+        cartItems: cart,
+      }
+    );
     window.location.assign(data);
   };
 
