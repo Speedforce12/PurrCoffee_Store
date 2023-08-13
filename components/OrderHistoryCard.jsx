@@ -5,7 +5,6 @@ import { format, parseISO } from "date-fns";
 import { cn } from "@/lib/utils";
 
 const OrderHistoryCard = ({ orders }) => {
-  console.log(orders);
 
   return (
     <>

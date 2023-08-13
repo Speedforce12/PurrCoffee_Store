@@ -16,7 +16,6 @@ const HistoryPage = async () => {
     products: order.orderItems.map((orderItem) => orderItem.products.name),
   }));
 
-  console.log(formattedOrders.address);
   return (
     <div className='flex flex-col mt-5'>
       <div>
